@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mark Attendance | Tuesday Call G-Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="logo-banner">
+    <img src="magic-bus-logo.png" alt="Magic Bus India Foundation"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+    <div class="logo-fallbac"><span class="dot">&#9733;</span><span>Magic Bus <b>India Foundation</b></span></div>
+  </header>
+
+  <section class="hero compact">
+    <h1>Tuesday Call G-Tracker</h1>
+    <p>Employee Attendance</p>
+  </section>
+
+  <main class="container pull-up">
+    <div class="glass form-card">
+      <a class="link back" href="index.html">&larr; Back</a>
+
+      <div id="formView">
+        <h2>Mark your attendance</h2>
+        <p class="sub">Fill in your details and submit. You can mark attendance once per call.</p>
+
+        <div id="msg" class="msg"></div>
+
+        <form id="attForm" novalidate>
+          <div class="field">
+            <label for="date">Date</label>
+            <input id="date" type="text" readonly>
+          </div>
+          <div class="field">
+            <label for="name">Your Name</label>
+            <input id="name" type="text" placeholder="Enter your full name" autocomplete="name" maxlength="60" required>
+          </div>
+          <div class="field">
+            <label for="position">  Project</label>
+            <select id="position" required></select>
+          </div>
+          <button class="btn block" id="submitBtn" type="submit">Submit Attendance</button>
+        </form>
+      </div>
+
+      <div id="doneView" class="success hidden">
+        <div class="tick">&#10003;</div>
+        <h2>Attendance recorded!</h2>
+        <p class="sub" id="doneText"></p>
+        <a class="btn ghost" href="index.html">Back to home</a>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="employee.js"></script>
+</body>
+</html>

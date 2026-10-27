@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin | Tuesday Call G-Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="logo-banner">
+    <img src="magic-bus-logo.png" alt="Magic Bus India Foundation"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+    <div class="logo-fallbac"><span class="dot">&#9733;</span><span>Magic Bus <b>India Foundation</b></span></div>
+  </header>
+
+  <section class="hero compact">
+    <h1>Tuesday Call G-Tracker</h1>
+    <p>Admin Dashboard</p>
+  </section>
+
+  <main class="container pull-up">
+
+    <!-- LOGIN VIEW -->
+    <div id="loginView" class="glass form-card hidden">
+      <a class="link back" href="index.html">&larr; Back</a>
+      <h2>Admin sign in</h2>
+      <p class="sub">Only authorised persons can access attendance insights.</p>
+      <div id="loginMsg" class="msg"></div>
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" autocomplete="username" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" autocomplete="current-password" placeholder="Your password" required>
+        </div>
+        <button class="btn block" id="loginBtn" type="submit">Sign in</button>
+      </form>
+      <p style="margin-top:16px;text-align:center"><button class="link" id="resetBtn" type="button">Forgot password?</button></p>
+    </div>
+
+    <!-- LOADING VIEW -->
+    <div id="loadingView" class="glass form-card">
+      <p class="empty">Loading...</p>
+    </div>
+
+    <!-- DASHBOARD VIEW -->
+    <div id="dashView" class="hidden">
+      <div class="glass panel" style="margin-bottom:24px">
+        <div class="topbar" style="margin-bottom:0">
+          <div class="who">Signed in as <b id="adminEmail"></b></div>
+          <div class="actions">
+            <button class="btn small yellow" id="refreshBtn">Refresh</button>
+            <button class="btn small ghost" id="csvBtn">Export CSV</button>
+            <button class="btn small" id="logoutBtn">Sign out</button>
+          </div>
+        </div>
+      </div>
+
+      <section class="stats">
+        <div class="glass stat"><div class="label">Calls conducted</div><div class="value" id="sCalls">0</div><div class="hint">Days with attendance</div></div>
+        <div class="glass stat"><div class="label">Avg attendance</div><div class="value" id="sAvg">0%</div><div class="hint">Across all calls</div></div>
+        <div class="glass stat"><div class="label">Latest call</div><div class="value" id="sLatest">0%</div><div class="hint" id="sLatestHint">-</div></div>
+        <div class="glass stat"><div class="label">Team size</div><div class="value" id="sTeam">0</div><div class="hint" id="sTeamHint">-</div></div>
+      </section>
+
+      <section class="glass panel">
+        <h3>Attendance % by call</h3>
+        <p class="sub">Present employees &divide; team size, for each call.</p>
+        <div class="chart" id="chart"></div>
+        <hr style="border:none;border-top:1px solid var(--line);margin:22px 0">
+        <h3 style="font-size:1rem">Team size</h3>
+        <p class="sub">Total number of people expected on each call. Used to calculate attendance %. Leave blank to auto-use the number of unique people seen so far.</p>
+        <div class="settings-row">
+          <div class="field">
+            <label for="teamInput">Expected team size</label>
+            <input id="teamInput" type="number" min="1" placeholder="e.g. 25">
+          </div>
+          <button class="btn small" id="teamSave">Save</button>
+        </div>
+      </section>
+
+      <section class="glass panel">
+        <div class="panel-head">
+          <div><h3>Call-wise records</h3><p class="sub">Calls are numbered by date order: the earliest date is Call 1.</p></div>
+          <input class="search" id="search" type="search" placeholder="Search name or project">
+        </div>
+        <div id="calls"></div>
+      </section>
+
+      <section class="glass panel">
+        <h3>By project / position</h3>
+        <p class="sub">Total attendance entries per group.</p>
+        <div class="table-wrap"><table id="projTable"></table></div>
+      </section>
+
+      <section class="glass panel">
+        <h3>Employee-wise attendance</h3>
+        <p class="sub">Calls attended out of total calls conducted.</p>
+        <div class="table-wrap"><table id="empTable"></table></div>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
