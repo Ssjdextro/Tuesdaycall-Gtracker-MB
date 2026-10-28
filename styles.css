@@ -63,7 +63,7 @@ body::after  { width: 380px; height: 380px; background: var(--red); bottom: -120
 }
 
 .logo-banner img { height: 54px; width: auto; max-width: 70vw; object-fit: contain; display: block; }
-.logo-fallback {
+.logo-fallbac {
   align-items: center;
   gap: 10px;
   color: red;
